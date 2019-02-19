@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <span>
+                    <button type="button" data-toggle="collapse" style="margin:5px;" data-target="#demo">
+                        <span class="glyphicon glyphicon-align-left"></span>
+                    </button>
+                </span>
+                <p class="text-center f-16"><b>
+                        <%- problem.problemTitle%></b></p>
+
+            </div>
+
+            <div class="col-12 text-center">
+                <span>Time Limit :
+                    <%- problem.timeLimit %> sec</span><br>
+                <span>Memory Limit :
+                    <%- problem.memoryLimit %> megabytes</span>
+
+            </div>
+
+            <br>
+
+            <div class="col-12" id="demo">
+                <div>
+                    <%- problem.problemDetails%>
+                </div>
+            </div>
+            <div class="col-12">
+                <h4>Input</h4>
+                <div class="bg-info">
+                    <pre>
+<%- problem.sampleInput%>
+            </pre>
+                </div>
+                <h4>Output</h4>
+                <div class="bg-info">
+                    <pre>
+<%- problem.sampleOutput%>
+            </pre>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

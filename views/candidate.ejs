@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/room.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav class="navbar navbar-light navbar-expand-md bg-info justify-content-center">
+            <a href="/" class="navbar-brand d-flex w-50 mr-auto">Real Time Interview</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse w-100 p-2" id="collapsingNavbar3">
+
+                <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+
+                    <li class="nav-item">
+                        <div class="nav-item dropdown">
+                            <button class="nav-link dropdown-toggle btn" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <%- data.userName %>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Logout</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <br>
+
+    </div>
+    <div class="row mt-3 mx-2">
+            <div class="col text-center">
+                <div class="wm bg-success">Go to Room</div>
+                <div class="wm">
+                    <input type="text" id="goRoomId" class="form-control" placeholder="Entern Room Id"><br>
+                    <input type="hidden" name="" class="form-control" id="userName" value="<%- data.userName %>">
+                    <input type="hidden" name="" class="form-control" id="role" value="<%- data.role %>">
+                    <button class="btn btn-primary" id="goRoomBtn">Submit</button>
+                </div>
+    
+            </div>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/welcome.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body style="padding:10px">
+
+
+    <input type="hidden" id="userName" value=<%-JSON.stringify(userName) %>>
+    <input type="hidden" id="_id" value=<%-problem._id %>>
+    <input type="hidden" id="setter" value=<%-problem.setterName %>>
+    <input type="hidden" id="role" value=<%- role %>>
+
+    <div class="parent-container">
+
+        <div class="container leftSide">
+            <div class="row">
+                <div class="col-12">
+                    <span>
+                        <button type="button" data-toggle="collapse" style="margin:5px;" data-target="#demo">
+                            <span class="glyphicon glyphicon-align-left"></span>
+                        </button>
+                    </span>
+                    <p id='title' class="text-center f-16"><b>
+                            <%- problem.problemTitle %></b></p>
+
+                </div>
+
+                <div class="col-12 text-center">
+                    Time Limit : <span id='timeLimit'>
+                        <%- problem.timeLimit %> </span>sec<br>
+                    Memory Limit : <span id='memoryLimit'>
+                        <%- problem.memoryLimit %> </span>megabytes
+
+                </div>
+
+                <br>
+
+                <div class="col-12" id="demo">
+                    <pre id="details"><%- problem.problemDetails %></pre>
+                </div>
+                <div class="col-12">
+                    <h4>Input</h4>
+                    <div class="bg-info">
+                        <pre id='sampleInput'><%- problem.sampleInput %>  </pre>
+                    </div>
+                    <h4>Output</h4>
+                    <div class="bg-info">
+                        <pre id='sampleOutput'><%- problem.sampleOutput %>  </pre>
+                    </div>
+
+
+                </div>
+            </div><br>
+
+            <div class="row">
+                <div class="col text-center">
+                    <h4>Live Editor</h4>
+                </div>
+                <div class="col myEditor">
+                    <div id="firepad-container"> </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+
+                <div class="col text-right">
+                    <button id="run" class="btn btn-primary">Run </button>
+                    <button id="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div id='result' class="col text-center bg-success" style="height:50px;">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container rightSide">
+            <div class="row topRow">
+                <div class="col text-right">
+                    <button id='logout' class="btn btn-primary">Logout</button>
+                </div>
+            </div>
+            <br>
+
+            <div class="row middleRow">
+
+                <div class="col-md-12">
+                    <div class="panel" style="border-color:mediumturquoise;">
+                        <div class="panel-heading" style="background-color:mediumturquoise;">Users in Room</div>
+                        <div class="panel-body" id="show-users">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row bottomRow">
+                <div class="col-md-12">
+                    <div id='top' class="panel panel-primary expandableContent">
+                        <div id='head' class="panel-heading toggler">
+                            Live Discussion
+                        </div>
+                        <div id="abc">
+                            <div class="panel-body" id="chatroom">
+                                <span id="temp" style=" position: absolute;bottom: 80;left: 0;"></span>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="input-group send-message">
+                                    <textarea id="message" type="text" class="form-control input-sm" placeholder="Type your message here..."></textarea>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success btn-sm" id="btn">
+                                            Send
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div id='bottom' class="bg-primary go-bottom not-visible">
+                    Live Discussion
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function () {
+
+
+        $('#head').click(function () {
+            // $(this).toggle(500);
+            $('#top').addClass('not-visible');
+            $("#bottom").removeClass('not-visible');
+        });
+
+        $('#bottom').click(function () {
+
+            $(this).addClass('not-visible');
+            $("#top").removeClass('not-visible');
+            //  $(this).toggle(500);
+        });
+    });
+</script>
+
+
+
+
+<script src="/js/chat.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/addon/search/jump-to-line.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/addon/selection/active-line.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/addon/fold/xml-fold.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/addon/edit/matchtags.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/mode/javascript/javascript.js"></script>
+<script src="/js/online-compiler.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css" />
+<link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
+<script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
+
+
+</html>

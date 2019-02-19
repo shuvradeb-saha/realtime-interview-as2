@@ -1,0 +1,66 @@
+<div class="modal" id="myModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Update Problem</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+    
+            <!-- Modal body -->
+            <div class="modal-body">
+              <form method="post" action=<%- '/admin/' + userName + '/problems/' + problem._id%+'?_method=PUT'%>>
+                <input type="hidden" name="_method" value="put">
+                <input type="hidden" id="_id">
+                <div>
+                  <div class="col">
+                    <input id="title" type="text" class="form-control" placeholder="Enter Title" name="problemTitle">
+                  </div>
+                  <br>
+                  <div class="col">
+                    <input id="timeLimit" type="number" class="form-control" placeholder="Enter Time Limit" name="timeLimit">
+                  </div>
+                  <br>
+                  <div class="col">   
+                    <input id="memoryLimit" type="number" class="form-control" placeholder="Enter Memory Limit" name="memoryLimit">
+                  </div>
+                  <br>
+                  <div class="col">
+    
+                    <textarea id="details" rows="5" class="form-control" placeholder="Enter Problem Details" name="problemDetails"></textarea>
+                  </div>
+                  <br>
+                  <div class="col">
+    
+                    <textarea id="sampleInput" rows="5" class="form-control" placeholder="Enter Sample Input" name="sampleInput"></textarea>
+                  </div>
+                  <br>
+                  <div class="col">
+    
+                    <textarea id="sampleOutput" rows="5" class="form-control" placeholder="Enter Sample Output" name="sampleOutput"></textarea>
+                  </div>
+                  <br>
+    
+                  <div class="col">
+    
+                    <textarea id="input" rows="5" class="form-control" placeholder="Enter Input" name="input"></textarea>
+                  </div>
+                  <br>
+                  <div class="col">
+    
+                    <textarea id="output" rows="5" class="form-control" placeholder="Enter Output" name="output"></textarea>
+                  </div>
+                  <input type="hidden" id='userName' value=<%-userName %> name="userName">
+                  <br>
+                  <input type="submit" id='submit' class=" btn btn-primary" value="Update" style="float: right;"><br>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+    
+          </div>
+        </div>
+      </div>

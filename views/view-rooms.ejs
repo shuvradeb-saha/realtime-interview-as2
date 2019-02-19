@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/go-to-room.js"></script>
+</head>
+
+<body>
+
+    <% include nav-admin.ejs %>
+    <div class="row mx-2">
+        <div class="col text-center">
+            <h1>Your Rooms</h1>
+        </div>
+    </div>
+    <div class="row mt-3 mx-2 text-center">
+        <div class="col text-center">
+            <table class="table-sm text-center" border="1">
+                <tr>
+                    <th>Room Id</th>
+                    <th>Room Name</th>
+                    <th>Problem Title</th>
+                    <th>Candidate</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                <% if(rooms) {%>
+                <% rooms.forEach(function(room) {%>
+                <tr>
+                    <td>
+                        <span id="<%- room._id %>">
+                            <%- room._id %></span>
+                        <span><button class="copy-btn btn btn-xs" data-type="attribute" data-attr-name="data-clipboard-text"
+                                data-model="couponCode" data-clipboard-text="<%- room._id %>"><span class="small">copy</span></button></span>
+                    </td>
+                    <td>
+                        <%- room.roomName %>
+                    </td>
+                    <td>
+
+                        <a href=<%- '/admin/' + userName + '/problems/' + room.problemId +'?short=true' %>>
+                            <%- room.problemTitle %></a>
+
+                    </td>
+                    <td>
+                        <%if(!room.candidateName){%>
+                        <span style="color: darkred">Not Available</span>
+                        <% }%>
+                        <%- room.candidateName %>
+                    </td>
+                    <td>
+                        <%- room.status %>
+                    </td>
+                    <td>
+                        <button name="go-room-btn" class="btn btn-primary" id=<%- room._id %> >Go To Room</button>
+                    </td>
+                </tr>
+
+                <% })} %>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+<script>
+    $(document).ready(function () {
+        $('.copy-btn').on("click", function () {
+            value = $(this).data('clipboard-text');
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(value).select();
+            document.execCommand("copy");
+            $temp.remove();
+        })
+    })
+</script>
+
+
+</html>

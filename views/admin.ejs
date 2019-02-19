@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/update-problem.js"></script>
+  <script src="/js/room.js"></script>
+</head>
+
+<body>
+  <% include add-modal.ejs %>
+  <div class="row mx-2">
+    <div class="col text-center">
+
+      <% include nav-admin.ejs %>
+
+    </div>
+  </div>
+
+  </div>
+  <div class="row mt-3 mx-2">
+    <div class="col text-center">
+      <h3>Your Problem Set</h3>
+    </div>
+  </div>
+
+  <div class="row mt-3 mx-2 text-center">
+    <table border="2" class="table-md text-center">
+      <% if(problems) { %>
+      <% problems.forEach(function(problem) { %>
+      <tr class="m-2">
+        <td>
+          <span class="ml-5" style="float:left;">
+            <a href=<%- '/admin/' + userName + '/problems/' + problem._id +'?short=true' %>>
+              <%- problem.problemTitle %></a>
+          </span>
+
+        </td>
+        <td name="operation">
+          <input type="hidden" name="problemId" value=<%- problem._id %> >
+          <input type="hidden" name="problemTitle" value="<%- problem.problemTitle %>">
+          <span>
+
+            <button type="submit" class="btn btn-primary btn-sm" name="update">Update </button>
+
+
+          </span>
+
+          <!-- <span>
+            <button class="btn btn-danger btn-sm" name="remove">Remove </button>
+          </span> -->
+          <span>
+            <button class="btn btn-dark btn-sm" name="createRoom">Create Room</button>
+          </span>
+        </td>
+      </tr>
+      <% }) %>
+      <% } %>
+    </table>
+  </div>
+  <%- include room-modal.ejs %>
+</body>
+
+</html>

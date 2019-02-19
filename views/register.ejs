@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Create New</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="js/login.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <div class="center-screen">
+                <div class="myDiv">
+                    <div class="col text-center">
+                        <h2 style="color: white;">Sign Up Here</h2>
+                    </div>
+                    <br>
+                    <form method="post" action="/users">
+                        <div class="form-row">
+                            <div class="col-2">
+                                <input class="form-control" type="text" placeholder="Enter Full Name" name="fullName"><br>
+                            </div>
+                            <br>
+                            <div class="col-2">
+                                <input class="form-control" type="text" placeholder="Enter User Name" name="userName"><br>
+                            </div>
+                            <br>
+                            <div class="col-2">
+                                <input class="form-control" type="password" placeholder="Enter Password" name="password"><br>
+                            </div>
+                            <br>
+                            <div class="col-2">
+                            <div class="col-2">
+                                    <select class="form-control" name="userRole">
+                                        <option>Select Role</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="candidate">Candidate</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col-2">
+                                <input style="float: left" id="submitNews" class="btn btn-success" type="submit" value="Register">
+                             
+                            </div>
+                            <br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div></div></div>
+
+</body>
+</html>

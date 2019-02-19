@@ -1,0 +1,38 @@
+.center-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 50%;
+    min-height: 100vh;
+}
+
+.myDiv {
+    background-color: #0e79a0;
+    padding: 20px;
+    height: 80%;
+    width: 50%;
+    border-radius: 5px;
+}
+
+.welcome {
+    background-color: #1088b4;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding: 10px
+}
+
+table {
+    border-radius: 5px;
+    width: 50%;
+    margin: 0px auto;
+    float: none;
+}
+
+.wm{
+    margin-left: 30%;
+    margin-right: 30%;
+
+}
